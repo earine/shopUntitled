@@ -1,0 +1,96 @@
+body {
+    padding-top: 100px;
+}
+
+#navbar {
+    height: 90px;
+    padding-top: 20px;
+}
+
+#brandbar{
+    font-size: 80px;
+    color: white;
+}
+
+.col-md-4 h4 {
+
+}
+
+
+.container-fluid {
+    margin-left: 120px !important;
+    margin-right: 120px !important;
+}
+
+.container-fluid .row {
+    padding-bottom: 2%;
+}
+
+#images {
+    display: block;
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    /*max-width: 100%;*/
+    margin-bottom: 2%;
+}
+
+
+#hover-details:hover .overlay {
+    display: block;
+    background: rgba(0, 0, 0, .3);
+}
+
+#hover-details .button {
+    position: absolute;
+    width: 200px;
+    top: 45%;
+    left: 25%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+
+#hover-details .button a {
+    width: 200px;
+    padding: 12px 48px;
+    text-align: center;
+    color: white;
+    border: solid 2px white;
+    z-index: 1;
+}
+
+#hover-details:hover .button {
+    opacity: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 50px;
+    left: 15px;
+    width: 350px;
+    height: 350px;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.5s ease;
+}
+
+#container-text-product {
+    /*margin-top: 10px;*/
+    height: 50px;
+    display: flex;
+    align-items: center;
+    font-family: futura-pt,sans-serif;
+    letter-spacing: .5px;
+    color: #2d2d2d;
+    line-height: 30px;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.container-fluid p {
+    font-weight: 900;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+
