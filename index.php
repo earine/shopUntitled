@@ -21,7 +21,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="text">Женщины<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="#">Худи</a></li>
-                    <li><a href="#">Футболки</a></li>
+                    <li><a href="#">Фуvтболки</a></li>
                     <li><a href="#">Брюки</a></li>
                     <li><a href="#">Обувь</a></li>
                 </ul>
