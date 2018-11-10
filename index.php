@@ -1,3 +1,10 @@
+<?php
+    require_once 'core/init.php';
+
+    $sql = "SELECT * FROM products WHERE featured = 1";
+    $featured = $db->query($sql);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,68 +52,28 @@
 		<div id="image-2"> </div>
 	</div> -->
 
+
+
 <!-- featured products -->
 
 <div class="container-fluid">
     <h2 class="text-center">Специальные предложения</h2>
     <div class="row">
+        <?php while($product = mysqli_fetch_assoc($featured)) : ?>
         <div class="col-md-3">
             <div id="container-text-product">
-                <h4>John Elliott x Nike Air Force 1</h4>
+                <p> <?=$product['title']; ?> </p>
             </div>
 
             <div id="hover-details">
-                <img src="images/JohnElliott-NikeAirForce.jpg" alt="John Elliott x Nike Air Force 1" id="images"/>
+                <img src="images/<?=$product['image']; ?>" alt="<?=$product['title']; ?>" id="images"/>
                 <div class="overlay"></div>
-                <div class="button" data-toggle="modal" data-target="#details-1"><a href="#"> ПОДРОБНЕЕ </a></div>
+                <div class="button" ><a href="#"> ПОДРОБНЕЕ </a></div>
+<!--                data-toggle="modal" data-target="#details-1"-->
             </div>
-
-            <p class="list-price text-danger"><s>$254.99</s></p>
-            <p class="price">$210.00</p>
+            <p class="price"><span class="discount-price text-danger" style="font-size:130%"><s>$<?=$product['price']; ?></s></span> $<?=round($product['price'] - ($product['price']*$product['discount_percent'])/100, 2); ?></p>
         </div>
-
-        <div class="col-md-3">
-            <div id="container-text-product">
-                <h4>Coat Levi’s x Justin Timberlake "Fresh Leaves"</h4>
-            </div>
-
-            <div id="hover-details">
-                <img src="images/Coat-Levis-JustinTimberlake.jpg" alt="Coat Levi’s x Justin Timberlake" id="images"/>
-                <div class="overlay"></div>
-                <div class="button" data-toggle="modal" data-target="#details-1"><a href="#"> ПОДРОБНЕЕ </a></div>
-            </div>
-            <p class="list-price text-danger"><s>$144.23</s></p>
-            <p class="price">$90.99</p>
-
-        </div>
-
-        <div class="col-md-3">
-            <div id="container-text-product">
-                <h4>John Elliott x Nike Air Force 1</h4>
-            </div>
-            <div id="hover-details">
-                <img src="images/JohnElliott-NikeAirForce.jpg" alt="John Elliott x Nike Air Force 1" id="images"/>
-                <div class="overlay"></div>
-                <div class="button" data-toggle="modal" data-target="#details-1"><a href="#"> ПОДРОБНЕЕ </a></div>
-            </div>
-            <p class="list-price text-danger"><s>$254.99</s></p>
-            <p class="price">$210.00</p>
-
-        </div>
-
-        <div class="col-md-3">
-            <div id="container-text-product">
-                <h4>John Elliott x Nike Air Force 1</h4>
-            </div>
-            <div id="hover-details">
-                <img src="images/JohnElliott-NikeAirForce.jpg" alt="John Elliott x Nike Air Force 1" id="images"/>
-                <div class="overlay"></div>
-                <div class="button" data-toggle="modal" data-target="#details-1"><a href="#"> ПОДРОБНЕЕ </a></div>
-            </div>
-            <p class="list-price text-danger"><s>$254.99</s></p>
-            <p class="price">$210.00</p>
-
-        </div>
+        <?php endwhile; ?>
     </div>
 </div>
 

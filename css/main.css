@@ -12,11 +12,6 @@ body {
     color: white;
 }
 
-.col-md-4 h4 {
-
-}
-
-
 .container-fluid {
     margin-left: 120px !important;
     margin-right: 120px !important;
@@ -77,17 +72,18 @@ body {
 #container-text-product {
     /*margin-top: 10px;*/
     height: 50px;
-    display: flex;
+    width: 350px;
+    display: flex !important;
     align-items: center;
     font-family: futura-pt,sans-serif;
     letter-spacing: .5px;
+    font-size: 18px;
     color: #2d2d2d;
-    line-height: 30px;
     word-wrap: break-word;
-    hyphens: auto;
 }
 
-.container-fluid p {
+
+.container-fluid .price {
     font-weight: 900;
     letter-spacing: 2px;
     white-space: nowrap;
