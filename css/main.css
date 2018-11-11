@@ -1,10 +1,40 @@
+/* :: 1.0 Import Web Fonts */
+
 body {
     padding-top: 100px;
+    font-size: 14px;
+    font-family: futura-pt,sans-serif;
 }
 
 #navbar {
     height: 90px;
     padding-top: 20px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.dropdown-menu>li {
+    height: 45px;
+    /*border-bottom: 1px solid rgba(242,244,248,.7);*/
+}
+
+.dropdown-menu>li>a{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.cart-button img{
+    height: 45px;
+    width: auto;
+    padding-top: 10px;
+    margin-left: 250px;
 }
 
 #brandbar{
@@ -22,9 +52,9 @@ body {
 }
 
 #images {
-    display: block;
     width: 350px;
     height: 350px;
+    display: block;
     object-fit: cover;
     /*max-width: 100%;*/
     margin-bottom: 2%;
@@ -75,13 +105,18 @@ body {
     width: 350px;
     display: flex !important;
     align-items: center;
-    font-family: futura-pt,sans-serif;
+
+    font-style: normal;
+    font-weight: 300;
     letter-spacing: .5px;
     font-size: 18px;
     color: #2d2d2d;
     word-wrap: break-word;
 }
 
+s {
+    font-size: 18px;
+}
 
 .container-fluid .price {
     font-weight: 900;
@@ -90,3 +125,19 @@ body {
 }
 
 
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!.....................................*/
+
+#details-container {
+    padding-top: 1%;
+}
+
+.col-md-7{
+    padding-left: 200px !important;
+    /*margin-right: 120px !important;*/
+}
+
+#myCarousel {
+    width: 500px;
+    height: 700px;
+}
