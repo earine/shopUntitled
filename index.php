@@ -1,8 +1,8 @@
 <?php
     require_once 'core/init.php';
-
-    $sql = "SELECT * FROM products WHERE featured = 1";
-    $featured = $db->query($sql);
+$featured = $db->query("SELECT * FROM products WHERE featured = 1");
+$categories_female = $db->query("SELECT * FROM category WHERE gender IN('f', 'u')");
+$categories_male = $db->query("SELECT * FROM category WHERE gender IN('m', 'u')");
 ?>
 
 <!DOCTYPE html>
@@ -26,20 +26,26 @@
             <!--Drop Down Menu-->
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="text">ЖЕНЩИНЫ<span class="caret"></span></a>
+
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Худи</a></li>
-                    <li><a href="#">Футболки</a></li>
-                    <li><a href="#">Брюки</a></li>
-                    <li><a href="#">Обувь</a></li>
+                    <?php mysqli_data_seek($categories_female, 0);
+                    while ($category = mysqli_fetch_assoc($categories_female)) : ?>
+                        <li>
+                            <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('f') ?>"><?= $category['category'] ?></a>
+                        </li>
+                    <?php endwhile; ?>
                 </ul>
+
             </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="text">МУЖЧИНЫ<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Худи</a></li>
-                    <li><a href="#">Футболки</a></li>
-                    <li><a href="#">Брюки</a></li>
-                    <li><a href="#">Обувь</a></li>
+                    <?php mysqli_data_seek($categories_male, 0);
+                    while ($category = mysqli_fetch_assoc($categories_male)) : ?>
+                        <li>
+                            <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('m') ?>"><?= $category['category'] ?></a>
+                        </li>
+                    <?php endwhile; ?>
                 </ul>
             </li>
         </ul>
@@ -56,6 +62,7 @@
 </nav>
 
 <div class="container-fluid">
+    <!--    <form method="get" action="details.php">-->
     <h2 class="text-center">СПЕЦИАЛЬНЫЕ ПРЕДЛОЖЕНИЯ</h2>
     <div class="row">
         <?php while($product = mysqli_fetch_assoc($featured)) : ?>
@@ -67,13 +74,14 @@
             <div id="hover-details">
                 <img src="images/<?=$product['image-1']; ?>" alt="<?=$product['title']; ?>" id="images"/>
                 <div class="overlay"></div>
-                <div class="button" ><a href="details.php"> ПОДРОБНЕЕ </a></div>
+                <div class="button"><a href="details.php?id=<?php echo $product['id']; ?>"> ПОДРОБНЕЕ </a></div>
 <!--                data-toggle="modal" data-target="#details-1"-->
             </div>
             <p class="price"><span class="discount-price text-danger"><s>$<?=$product['price']; ?></s></span> $<?=round($product['price'] - ($product['price']*$product['discount_percent'])/100, 2); ?></p>
         </div>
         <?php endwhile; ?>
     </div>
+    <!--    </form>-->
 </div>
 
 

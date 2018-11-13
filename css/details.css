@@ -1,0 +1,81 @@
+/* :: 1.0 Import Web Fonts */
+
+body {
+    padding-top: 100px;
+    font-size: 20px;
+    font-family: futura-pt, sans-serif;
+}
+
+#navbar {
+    height: 90px;
+    padding-top: 20px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.dropdown-menu > li {
+    height: 45px;
+    /*border-bottom: 1px solid rgba(242,244,248,.7);*/
+}
+
+.dropdown-menu > li > a {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.cart-button img {
+    height: 45px;
+    width: auto;
+    padding-top: 10px;
+    margin-left: 250px;
+}
+
+#brandbar {
+    font-size: 80px;
+    color: white;
+}
+
+#details-container {
+    padding-top: 1%;
+}
+
+#myCarousel {
+    margin-left: 25%;
+    margin-right: auto;
+    display: block;
+    width: 600px;
+    height: 700px;
+}
+
+.carousel-inner > .item > a > img, .carousel-inner > .item > img {
+    width: 600px !important;
+    height: 700px !important;
+    display: block;
+    object-fit: cover;
+}
+
+.details-container {
+    width: 80%;
+    line-height: 2;
+}
+
+.details-container > .product-desc {
+    line-height: 180%;
+    font-weight: lighter;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.details-container > .price {
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}

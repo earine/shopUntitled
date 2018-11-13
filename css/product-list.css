@@ -1,0 +1,109 @@
+
+body {
+    padding-top: 100px;
+    font-size: 15px;
+    font-family: futura-pt, sans-serif;
+}
+
+#navbar {
+    height: 90px;
+    padding-top: 20px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.dropdown-menu > li {
+    height: 45px;
+    /*border-bottom: 1px solid rgba(242,244,248,.7);*/
+}
+
+.dropdown-menu > li > a {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.cart-button img {
+    height: 45px;
+    width: auto;
+    padding-top: 10px;
+    margin-left: 250px;
+}
+
+#brandbar {
+    font-size: 80px;
+    color: white;
+}
+
+.col-12, .col-md-10, .col-lg-11 {
+    margin-top: 2%;
+
+}
+
+.shop_sidebar_area {
+    font-size: 14px;
+    font-family: futura-pt, sans-serif;
+}
+
+.shop_grid_product_area {
+    width: 150%;
+}
+
+.col-md-4 {
+    width: fit-content;
+}
+
+.product-img > img {
+    width: 350px;
+    height: 350px;
+    /*display: block;*/
+    object-fit: cover;
+    /*max-width: 100%;*/
+    margin-bottom: 2%;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+.product-description > .brand {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #626262;
+}
+
+.product-description .title {
+    /*margin-top: 10px;*/
+    height: 40px;
+    width: 350px;
+    display: flex !important;
+    align-items: center;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: .5px;
+    font-size: 18px;
+    line-height: 120%;
+    color: rgba(0, 0, 0, 0.98);
+    word-wrap: break-word;
+}
+
+.product-description a {
+    color: #2d2d2d;
+}
+
+.product-description .price {
+    font-weight: 700;
+    height: 18px;
+    align-items: center;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+s {
+    font-size: 18px;
+}
