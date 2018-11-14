@@ -1,6 +1,5 @@
 <?php
-    require_once 'core/init.php';
-$featured = $db->query("SELECT * FROM products WHERE featured = 1");
+require_once 'core/init.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +8,8 @@ $featured = $db->query("SELECT * FROM products WHERE featured = 1");
     <meta charset="utf-8">
     <title>UNTITLED</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="css/main.css?v=1.0" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="css/register.css?v=1.0" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="css/navigation-bar.css?v=1.0" rel="stylesheet" type="text/css"/>
 
@@ -135,27 +134,74 @@ $featured = $db->query("SELECT * FROM products WHERE featured = 1");
     </div>
 </nav>
 
-<div class="container-fluid">
-    <!--    <form method="get" action="details.php">-->
-    <h2 class="text-center">СПЕЦИАЛЬНЫЕ ПРЕДЛОЖЕНИЯ</h2>
-    <div class="row">
-        <?php while($product = mysqli_fetch_assoc($featured)) : ?>
-        <div class="col-md-3">
-            <div id="container-text-product">
-                <p> <?=$product['title']; ?> </p>
-            </div>
+<div class="container">
+    <div class="account account-personal">
+        <div class="centered row">
+            <h1>Регистрация</h1>
 
-            <div id="hover-details">
-                <img src="images/<?=$product['image-1']; ?>" alt="<?=$product['title']; ?>" id="images"/>
-                <div class="overlay"></div>
-                <div class="button"><a href="details.php?id=<?php echo $product['id']; ?>"> ПОДРОБНЕЕ </a></div>
-<!--                data-toggle="modal" data-target="#details-1"-->
+
+            <script src="/catalog/view/theme/default/javascript/jquery/jquery.inputmask.js"
+                    type="text/javascript"></script>
+
+            <div class="blocks">
+                <form action="https://brandshop.ru/register/" method="post" id="register-form"
+                      enctype="multipart/form-data"
+                      class="block">
+                    <div class="row">
+                        <div class="col-35">
+                            <label for="firstname">Имя</label>
+                            <input id="firstname" type="text" name="firstname" value="">
+                        </div>
+                        <div class="col-35 col-offset-5">
+                            <label for="lastname">Фамилия:</label>
+                            <input id="lastname" type="text" name="lastname" value="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-35">
+                            <label for="phone">Телефон:</label>
+                            <input id="phone" type="tel" name="telephone" value=""
+                                   data-inputmask="'mask': '+7(999)999-99-99'">
+                        </div>
+                        <div class="col-35 col-offset-5">
+                            <label for="email">E-Mail:</label>
+                            <input id="email" type="email" name="email" value="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-35">
+                            <label for="password">Пароль:</label>
+                            <input id="password" type="password" name="password" value="">
+                        </div>
+                        <div class="col-35 col-offset-5">
+                            <label for="confirm">Подтверждение пароля:</label>
+                            <input id="confirm" type="password" name="confirm" value="">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-100">&nbsp;</div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-20">
+                            <button type="submit" class="btn btn-orange" title="Продолжить">Продолжить</button>
+                        </div>
+                        <div class="col-60">
+                            <p class="entry_policy">Нажимая на кнопку «Продолжить», Вы даете компании ООО «БШ Стор» своё
+                                письменное <a href="/doc/consent_to_the_processing_of_personal_data.pdf"
+                                              target="_blank">Согласие
+                                    на обработку моих персональных данных</a>, соглашаетесь с <a href="/oferta/">Пользовательским
+                                    соглашением</a> и <a href="/privacy/">Политикой о конфиденциальности</a>.</p>
+                        </div>
+                    </div>
+
+                </form>
             </div>
-            <p class="price"><span class="discount-price text-danger"><s>$<?=$product['price']; ?></s></span> $<?=round($product['price'] - ($product['price']*$product['discount_percent'])/100, 2); ?></p>
         </div>
-        <?php endwhile; ?>
     </div>
-    <!--    </form>-->
 </div>
 
 

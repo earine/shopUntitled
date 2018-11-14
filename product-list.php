@@ -3,11 +3,9 @@ require_once 'core/init.php';
 $id = $_GET['id'];
 $gender = $_GET['gender'];
 
-$sql = "SELECT b.brand_name, c.category, p.id, p.discount_percent, p.price, p.title, p.`image-2`, p.`image-1`, p.`image-3` FROM products p, category c, brand b WHERE c.id = '$id' AND c.id = p.category AND p.sex IN ('$gender', 'u') AND b.id=p.brand";
+$sql = "SELECT b.brand_name, c.category, p.id, p.discount_percent, p.price, p.title, p.`image-2`, p.`image-1`, p.`image-3` FROM products p, category c, brand b WHERE c.id = '$id' AND c.id = p.category AND p.sex IN ('$gender', 'u') AND b.id=p.brand ORDER BY (p.id) DESC";
 
 $result = $db->query($sql);
-$categories = $db->query("SELECT * FROM category");
-//$brands = $db->query("SELECT b.id, b.brand_name, FROM brand b, products p, category c WHERE b.id=p.brand AND c.id = '$id' AND c.id = p.category");
 ?>
 
 
@@ -15,51 +13,131 @@ $categories = $db->query("SELECT * FROM category");
 <html>
 <head>
     <meta charset="utf-8">
-    <title>UNTITLED</title>
+    <?php
+    while (($category = mysqli_fetch_array($result))) : ?>
+        <title><?= $category['category']; ?></title>
+    <?php endwhile; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="css/product-list.css?v=1.0" rel="stylesheet" type="text/css"/>
+    <link href="css/navigation-bar.css?v=1.0" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/dropdown-menu.js" type="text/javascript"></script>
 </head>
 <body>
+
 
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
     <div class="container">
         <a href="index.php" class="navbar-brand" id="brandbar">UNTITLED</a>
         <ul class="nav navbar-nav">
-            <!--Drop Down Menu-->
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="text">ЖЕНЩИНЫ<span class="caret"></span></a>
 
-                <ul class="dropdown-menu" role="menu">
-                    <?php while ($category = mysqli_fetch_assoc($categories)) : ?>
-                        <li>
-                            <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('f') ?>"><?= $category['category'] ?></a>
-                        </li>
-                    <?php endwhile; ?>
-                </ul>
-
-            </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="text">МУЖЧИНЫ<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <?php mysqli_data_seek($categories, 0);
-                    while ($category = mysqli_fetch_assoc($categories)) : ?>
-                        <li>
-                            <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('m') ?>"><?= $category['category'] ?></a>
-                        </li>
-                    <?php endwhile; ?>
-                </ul>
-            </li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Женщины<b class="caret"></b></a>
+
+                <ul class="dropdown-menu mega-menu">
+
+                    <li class="mega-menu-column">
+                        <ul>
+                            <li class="nav-header">Одежда</li>
+                            <img src="images/champion-reverse-weave-down-red-01-1.jpg">
+                            <?php while ($category = mysqli_fetch_assoc($female_clothes)) : ?>
+                                <li class="category">
+                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('f') ?>"><?= $category['category'] ?></a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </li>
+
+                    <li class="mega-menu-column">
+                        <ul>
+                            <li class="nav-header">Обувь</li>
+                            <img src="images/dr-martens-1460-smooth-black-1.jpg">
+                            <?php while ($category = mysqli_fetch_assoc($female_shoes)) : ?>
+                                <li class="category">
+                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('f') ?>"><?= $category['category'] ?></a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </li>
+
+                    <li class="mega-menu-column">
+                        <ul>
+                            <li class="nav-header">Аксессуары</li>
+                            <img src="images/adidas-backpack-originals-eqt-item1.png">
+                            <?php while ($category = mysqli_fetch_assoc($female_accessories)) : ?>
+                                <li class="category">
+                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('f') ?>"><?= $category['category'] ?></a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </li>
+
+                </ul><!-- dropdown-menu -->
+
+            </li><!-- /.dropdown -->
+
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Мужчины<b class="caret"></b></a>
+
+                <ul class="dropdown-menu mega-menu">
+
+                    <li class="mega-menu-column">
+                        <ul>
+                            <li class="nav-header">Одежда</li>
+                            <img src="images/nike-windrunner-jacket-item-1.jp2">
+                            <?php while ($category = mysqli_fetch_assoc($male_clothes)) : ?>
+                                <li class="category">
+                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('m') ?>"><?= $category['category'] ?></a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </li>
+
+                    <li class="mega-menu-column">
+                        <ul>
+                            <li class="nav-header">Обувь</li>
+                            <img src="images/nike-air-max-97-qs-black-varsity-red-metallic-silver-white-1.jpg">
+                            <?php while ($category = mysqli_fetch_assoc($male_shoes)) : ?>
+                                <li class="category">
+                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('m') ?>"><?= $category['category'] ?></a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </li>
+
+                    <li class="mega-menu-column">
+                        <ul>
+                            <li class="nav-header">Аксессуары</li>
+                            <img src="images/champion-reverse-weave-merino-knit-beanie-logo-navy-1.jpg">
+                            <?php while ($category = mysqli_fetch_assoc($male_accessories)) : ?>
+                                <li class="category">
+                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('m') ?>"><?= $category['category'] ?></a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </li>
+
+                </ul><!-- dropdown-menu -->
+
+            </li><!-- /.dropdown -->
         </ul>
+
+
         <!-- ##### Right Side Cart Area ##### -->
 
-        <div class="right-side-cart-area">
-            <!-- Cart Button -->
-            <div class="cart-button">
-                <a href="#" id="rightSideCart"><img src="images/elements/shopping-cart.png" alt=""> <span></span></a>
+        <div class="right-side-area">
+            <!-- User Login Info -->
+            <div class="col-md-6">
+                <a href="register.php"><img src="images/elements/account-icon.png" alt=""></a>
+            </div>
+            <!-- Cart Area -->
+            <div class="col-md-6">
+                <a href="cart.php"><img src="images/elements/shopping-cart.png" alt=""></a>
             </div>
         </div>
         <!-- ##### Right Side Cart End ##### -->
@@ -71,87 +149,8 @@ $categories = $db->query("SELECT * FROM category");
 
 <div class="container">
     <div class="row">
-        <!--     Left side       -->
-        <div class="col-12 col-md-3 col-lg-2">
-            <div class="shop_sidebar_area">
 
-                <!-- ##### Single Widget ##### -->
-                <div class="widget catagory mb-50">
-                    <!-- Widget Title -->
-                    <h3>Categories</h3>
 
-                    <!--  Categories  -->
-                    <div class="categories-menu">
-                        <!-- Single Item -->
-                        <!--                                    <ul class="sub-menu collapse show" id="clothing">-->
-                        <!--                                        <li><a href="#">All</a></li>-->
-                        <!--                                        <li><a href="#">Bodysuits</a></li>-->
-                        <!--                                        <li><a href="#">Dresses</a></li>-->
-                        <!--                                        <li><a href="#">Hoodies &amp; Sweats</a></li>-->
-                        <!--                                        <li><a href="#">Jackets &amp; Coats</a></li>-->
-                        <!--                                        <li><a href="#">Jeans</a></li>-->
-                        <!--                                        <li><a href="#">Pants &amp; Leggings</a></li>-->
-                        <!--                                        <li><a href="#">Rompers &amp; Jumpsuits</a></li>-->
-                        <!--                                        <li><a href="#">Shirts &amp; Blouses</a></li>-->
-                        <!--                                        <li><a href="#">Shirts</a></li>-->
-                        <!--                                        <li><a href="#">Sweaters &amp; Knits</a></li>-->
-                        <!--                                    </ul>-->
-                    </div>
-                </div>
-
-                <!-- ##### Single Widget ##### -->
-                <div class="widget price mb-50">
-                    <!-- Widget Title -->
-                    <h3>Filter by</h3>
-                    <!-- Widget Title 2 -->
-                    <p class="widget-title2 mb-30">Price</p>
-
-                    <div class="widget-desc">
-                        <div class="slider-range">
-                            <div data-min="49" data-max="360" data-unit="$"
-                                 class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-                                 data-value-min="49" data-value-max="360" data-label-result="Range:">
-                                <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                            </div>
-                            <div class="range-price">Range: $49.00 - $360.00</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ##### Single Widget ##### -->
-                <div class="widget color mb-50">
-                    <!-- Widget Title 2 -->
-                    <p class="widget-title2 mb-30">Color</p>
-                    <div class="widget-desc">
-                        <ul class="d-flex">
-                            <li><a href="#" class="color1"></a></li>
-                            <li><a href="#" class="color2"></a></li>
-                            <li><a href="#" class="color3"></a></li>
-                            <li><a href="#" class="color4"></a></li>
-                            <li><a href="#" class="color5"></a></li>
-                            <li><a href="#" class="color6"></a></li>
-                            <li><a href="#" class="color7"></a></li>
-                            <li><a href="#" class="color8"></a></li>
-                            <li><a href="#" class="color9"></a></li>
-                            <li><a href="#" class="color10"></a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- ##### Single Widget ##### -->
-                <div class="widget brands mb-50">
-                    <!-- Widget Title 2 -->
-                    <p class="widget-title2 mb-30">Brands</p>
-                    <div class="widget-desc">
-                        <?php while ($brand = mysqli_fetch_assoc($result)) : ?>
-                            <li><a href="#"><?= $brand['brand_name'] ?></a></li>
-                        <?php endwhile; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="col-12 col-md-9 col-lg-10">
             <div class="shop_grid_product_area">

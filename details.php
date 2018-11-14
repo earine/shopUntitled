@@ -5,21 +5,25 @@ $id = $_GET['id'];
 $sql = "SELECT * FROM products p, brand b WHERE p.id = '$id' AND b.id = p.brand";
 
 $result = $db->query($sql);
-$categories = $db->query("SELECT * FROM category");
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>UNTITLED</title>
+    <?php
+    while (($product = mysqli_fetch_array($result))) : ?>
+        <title><?= $product['title']; ?></title>
+    <?php endwhile; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="css/details.css?v=1.0" rel="stylesheet" type="text/css"/>
+    <link href="css/navigation-bar.css?v=1.0" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/dropdown-menu.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -28,38 +32,110 @@ $categories = $db->query("SELECT * FROM category");
     <div class="container">
         <a href="index.php" class="navbar-brand" id="brandbar">UNTITLED</a>
         <ul class="nav navbar-nav">
-            <!--Drop Down Menu-->
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="text">ЖЕНЩИНЫ<span class="caret"></span></a>
 
-                <ul class="dropdown-menu" role="menu">
-                    <?php mysqli_data_seek($categories, 0);
-                    while ($category = mysqli_fetch_assoc($categories)) : ?>
-                        <li>
-                            <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('f') ?>"><?= $category['category'] ?></a>
-                        </li>
-                    <?php endwhile; ?>
-                </ul>
-
-            </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="text">МУЖЧИНЫ<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <?php mysqli_data_seek($categories, 0);
-                    while ($category = mysqli_fetch_assoc($categories)) : ?>
-                        <li>
-                            <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('m') ?>"><?= $category['category'] ?></a>
-                        </li>
-                    <?php endwhile; ?>
-                </ul>
-            </li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Женщины<b class="caret"></b></a>
+
+                <ul class="dropdown-menu mega-menu">
+
+                    <li class="mega-menu-column">
+                        <ul>
+                            <li class="nav-header">Одежда</li>
+                            <img src="images/champion-reverse-weave-down-red-01-1.jpg">
+                            <?php while ($category = mysqli_fetch_assoc($female_clothes)) : ?>
+                                <li class="category">
+                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('f') ?>"><?= $category['category'] ?></a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </li>
+
+                    <li class="mega-menu-column">
+                        <ul>
+                            <li class="nav-header">Обувь</li>
+                            <img src="images/dr-martens-1460-smooth-black-1.jpg">
+                            <?php while ($category = mysqli_fetch_assoc($female_shoes)) : ?>
+                                <li class="category">
+                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('f') ?>"><?= $category['category'] ?></a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </li>
+
+                    <li class="mega-menu-column">
+                        <ul>
+                            <li class="nav-header">Аксессуары</li>
+                            <img src="images/adidas-backpack-originals-eqt-item1.png">
+                            <?php while ($category = mysqli_fetch_assoc($female_accessories)) : ?>
+                                <li class="category">
+                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('f') ?>"><?= $category['category'] ?></a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </li>
+
+                </ul><!-- dropdown-menu -->
+
+            </li><!-- /.dropdown -->
+
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Мужчины<b class="caret"></b></a>
+
+                <ul class="dropdown-menu mega-menu">
+
+                    <li class="mega-menu-column">
+                        <ul>
+                            <li class="nav-header">Одежда</li>
+                            <img src="images/nike-windrunner-jacket-item-1.jp2">
+                            <?php while ($category = mysqli_fetch_assoc($male_clothes)) : ?>
+                                <li class="category">
+                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('m') ?>"><?= $category['category'] ?></a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </li>
+
+                    <li class="mega-menu-column">
+                        <ul>
+                            <li class="nav-header">Обувь</li>
+                            <img src="images/nike-air-max-97-qs-black-varsity-red-metallic-silver-white-1.jpg">
+                            <?php while ($category = mysqli_fetch_assoc($male_shoes)) : ?>
+                                <li class="category">
+                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('m') ?>"><?= $category['category'] ?></a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </li>
+
+                    <li class="mega-menu-column">
+                        <ul>
+                            <li class="nav-header">Аксессуары</li>
+                            <img src="images/champion-reverse-weave-merino-knit-beanie-logo-navy-1.jpg">
+                            <?php while ($category = mysqli_fetch_assoc($male_accessories)) : ?>
+                                <li class="category">
+                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('m') ?>"><?= $category['category'] ?></a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </li>
+
+                </ul><!-- dropdown-menu -->
+
+            </li><!-- /.dropdown -->
         </ul>
+
+
         <!-- ##### Right Side Cart Area ##### -->
 
-        <div class="right-side-cart-area">
-            <!-- Cart Button -->
-            <div class="cart-button">
-                <a href="#" id="rightSideCart"><img src="images/elements/shopping-cart.png" alt=""> <span></span></a>
+        <div class="right-side-area">
+            <!-- User Login Info -->
+            <div class="col-md-6">
+                <a href="register.php"><img src="images/elements/account-icon.png" alt=""></a>
+            </div>
+            <!-- Cart Area -->
+            <div class="col-md-6">
+                <a href="cart.php"><img src="images/elements/shopping-cart.png" alt=""></a>
             </div>
         </div>
         <!-- ##### Right Side Cart End ##### -->
@@ -80,7 +156,8 @@ $categories = $db->query("SELECT * FROM category");
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                    <?php while (($product = mysqli_fetch_array($result))) : ?>
+                    <?php mysqli_data_seek($result, 0);
+                    while (($product = mysqli_fetch_array($result))) : ?>
                     <div class="item active">
                         <img src="images/<?= $product['image-1']; ?>">
                     </div>
@@ -110,7 +187,7 @@ $categories = $db->query("SELECT * FROM category");
         <div class="col-md-6">
             <div class="details-container">
 
-                <row><span><?= $product['brand_name']; ?></span></row>
+                <p id="brand-name"><?= $product['brand_name']; ?></p>
                 <row><h2> <?= $product['title']; ?> </h2></row>
                 <?php if ($product['discount_percent'] != 0) : ?>
                     <p class="price"><span
