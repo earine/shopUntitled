@@ -1,5 +1,34 @@
 <?php
 require_once 'core/init.php';
+include('header.php');
+
+
+//checking if data has been entered
+if ((isset($_POST['firstname']) && !empty($_POST['firstname'])) && (isset($_POST['lastname']) && !empty($_POST['lastname']))
+    && (isset($_POST['email']) && !empty($_POST['email'])) && (isset($_POST['password']) && !empty($_POST['password'])) && (isset($_POST['telephone']) && !empty($_POST['telephone']))) {
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $phone = $_POST['telephone'];
+
+
+//This should retrive HTML form data and insert into database
+    $sql = "INSERT INTO user (firstname, lastname, email, password, phone) VALUES('$firstname','$lastname','$email','$password','$phone')";
+
+    $result = $db->query($sql);
+
+    if ($result == true) {
+        echo "Информация занесена в базу данных";
+    } else {
+        echo "Информация не занесена в базу данных";
+    }
+}
+
+
+// close connection
+mysqli_close($db);
+
 ?>
 
 <!DOCTYPE html>
@@ -16,141 +45,60 @@ require_once 'core/init.php';
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/dropdown-menu.js" type="text/javascript"></script>
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/inputmask.js"></script>-->
+    <script src="js/jquery.mask.js"></script>
+
+    <!--    <script src="js/validation.js" type="text/javascript"></script>-->
 </head>
 <body>
+<script>
+    $(document).ready(function () {
+        $('input[name="telephone"]').mask('+00 (000) 000 00 00', {placeholder: "+__ (___) ___ __ __"});
+        // $('input[name="email"]').mask("{1,20}@{1,20}.*{3}");
+    });
+
+    var check = function () {
+        // var i = 0;
+        // var text_fields = form.getElementsByTagName('input');
 
 
-<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
-    <div class="container">
-        <a href="index.php" class="navbar-brand" id="brandbar">UNTITLED</a>
-        <ul class="nav navbar-nav">
+        if (document.getElementById('password').value == document.getElementById('confirm').value) {
+            i = 1;
+        } else {
+            document.getElementById('warning-not-matching-pass').style.color = 'red';
+            document.getElementById('warning-not-matching-pass').innerHTML = 'Пароли не совпадают';
+            document.getElementById('submit').disabled = true;
+        }
 
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Женщины<b class="caret"></b></a>
+        if ((firstname.length === 0) || (lastname.length === 0) || (email.length === 0) || (password.length === 0) || (confirm.length === 0)) {
+            document.getElementById('submit').disabled = true;
+            document.getElementById('warning-emptyfields').style.color = 'red';
+            document.getElementById('warning-emptyfields').innerHTML = 'Пустые поля';
+        } else {
+            i = 2;
+        }
 
-                <ul class="dropdown-menu mega-menu">
-
-                    <li class="mega-menu-column">
-                        <ul>
-                            <li class="nav-header">Одежда</li>
-                            <img src="images/champion-reverse-weave-down-red-01-1.jpg">
-                            <?php while ($category = mysqli_fetch_assoc($female_clothes)) : ?>
-                                <li class="category">
-                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('f') ?>"><?= $category['category'] ?></a>
-                                </li>
-                            <?php endwhile; ?>
-                        </ul>
-                    </li>
-
-                    <li class="mega-menu-column">
-                        <ul>
-                            <li class="nav-header">Обувь</li>
-                            <img src="images/dr-martens-1460-smooth-black-1.jpg">
-                            <?php while ($category = mysqli_fetch_assoc($female_shoes)) : ?>
-                                <li class="category">
-                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('f') ?>"><?= $category['category'] ?></a>
-                                </li>
-                            <?php endwhile; ?>
-                        </ul>
-                    </li>
-
-                    <li class="mega-menu-column">
-                        <ul>
-                            <li class="nav-header">Аксессуары</li>
-                            <img src="images/adidas-backpack-originals-eqt-item1.png">
-                            <?php while ($category = mysqli_fetch_assoc($female_accessories)) : ?>
-                                <li class="category">
-                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('f') ?>"><?= $category['category'] ?></a>
-                                </li>
-                            <?php endwhile; ?>
-                        </ul>
-                    </li>
-
-                </ul><!-- dropdown-menu -->
-
-            </li><!-- /.dropdown -->
-
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Мужчины<b class="caret"></b></a>
-
-                <ul class="dropdown-menu mega-menu">
-
-                    <li class="mega-menu-column">
-                        <ul>
-                            <li class="nav-header">Одежда</li>
-                            <img src="images/nike-windrunner-jacket-item-1.jp2">
-                            <?php while ($category = mysqli_fetch_assoc($male_clothes)) : ?>
-                                <li class="category">
-                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('m') ?>"><?= $category['category'] ?></a>
-                                </li>
-                            <?php endwhile; ?>
-                        </ul>
-                    </li>
-
-                    <li class="mega-menu-column">
-                        <ul>
-                            <li class="nav-header">Обувь</li>
-                            <img src="images/nike-air-max-97-qs-black-varsity-red-metallic-silver-white-1.jpg">
-                            <?php while ($category = mysqli_fetch_assoc($male_shoes)) : ?>
-                                <li class="category">
-                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('m') ?>"><?= $category['category'] ?></a>
-                                </li>
-                            <?php endwhile; ?>
-                        </ul>
-                    </li>
-
-                    <li class="mega-menu-column">
-                        <ul>
-                            <li class="nav-header">Аксессуары</li>
-                            <img src="images/champion-reverse-weave-merino-knit-beanie-logo-navy-1.jpg">
-                            <?php while ($category = mysqli_fetch_assoc($male_accessories)) : ?>
-                                <li class="category">
-                                    <a href="product-list.php?id=<?php echo $category['id']; ?>&gender=<?php echo urlencode('m') ?>"><?= $category['category'] ?></a>
-                                </li>
-                            <?php endwhile; ?>
-                        </ul>
-                    </li>
-
-                </ul><!-- dropdown-menu -->
-
-            </li><!-- /.dropdown -->
-        </ul>
-
-
-        <!-- ##### Right Side Cart Area ##### -->
-
-        <div class="right-side-area">
-            <!-- User Login Info -->
-            <div class="col-md-6">
-                <a href="register.php"><img src="images/elements/account-icon.png" alt=""></a>
-            </div>
-            <!-- Cart Area -->
-            <div class="col-md-6">
-                <a href="cart.php"><img src="images/elements/shopping-cart.png" alt=""></a>
-            </div>
-        </div>
-        <!-- ##### Right Side Cart End ##### -->
-    </div>
-</nav>
+        //
+        if (i === 2) {
+            document.getElementById('submit').disabled = false;
+        }
+    };
+</script>
 
 <div class="container">
     <div class="account account-personal">
         <div class="centered row">
-            <h1>Регистрация</h1>
-
-
-            <script src="/catalog/view/theme/default/javascript/jquery/jquery.inputmask.js"
-                    type="text/javascript"></script>
-
+            <h1>РЕГИСТРАЦИЯ</h1>
+            <h4 id="warning-emptyfields"></h4>
+            <h4 id="warning-not-matching-pass"></h4>
             <div class="blocks">
-                <form action="https://brandshop.ru/register/" method="post" id="register-form"
+                <form action="register.php" method="post" id="register-form"
                       enctype="multipart/form-data"
-                      class="block">
+                      class="block" onkeyup='check();'>
                     <div class="row">
                         <div class="col-35">
                             <label for="firstname">Имя</label>
-                            <input id="firstname" type="text" name="firstname" value="">
+                            <input id="firstname" type="text" name="firstname">
                         </div>
                         <div class="col-35 col-offset-5">
                             <label for="lastname">Фамилия:</label>
@@ -160,8 +108,7 @@ require_once 'core/init.php';
                     <div class="row">
                         <div class="col-35">
                             <label for="phone">Телефон:</label>
-                            <input id="phone" type="tel" name="telephone" value=""
-                                   data-inputmask="'mask': '+7(999)999-99-99'">
+                            <input id="phone" type="tel" name="telephone">
                         </div>
                         <div class="col-35 col-offset-5">
                             <label for="email">E-Mail:</label>
@@ -179,22 +126,19 @@ require_once 'core/init.php';
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-100">&nbsp;</div>
-                    </div>
-
                     <hr>
 
                     <div class="row">
                         <div class="col-20">
-                            <button type="submit" class="btn btn-orange" title="Продолжить">Продолжить</button>
+                            <button type="submit" id="submit" class="btn btn-orange" title="Продолжить" disabled>
+                                Продолжить
+                            </button>
                         </div>
                         <div class="col-60">
-                            <p class="entry_policy">Нажимая на кнопку «Продолжить», Вы даете компании ООО «БШ Стор» своё
-                                письменное <a href="/doc/consent_to_the_processing_of_personal_data.pdf"
-                                              target="_blank">Согласие
-                                    на обработку моих персональных данных</a>, соглашаетесь с <a href="/oferta/">Пользовательским
-                                    соглашением</a> и <a href="/privacy/">Политикой о конфиденциальности</a>.</p>
+                            <p class="entry_policy">Нажимая на кнопку «Продолжить», Вы даете компании своё
+                                письменное Согласие
+                                на обработку моих персональных данных, соглашаетесь с Пользовательским
+                                соглашением и Политикой о конфиденциальности.</p>
                         </div>
                     </div>
 
