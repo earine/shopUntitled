@@ -64,6 +64,13 @@ body {
     float: left;
 }
 
+.col-80 {
+    width: 75%;
+    position: relative;
+    min-height: 1px;
+    float: left;
+}
+
 .col-20 {
     width: 20%;
 }
@@ -83,7 +90,7 @@ body {
     margin: 28px 0 10px;
 }
 
-.account .block input[type=email], .account .block input[type=password], .account .block input[type=tel], .account .block input[type=text] {
+.account .block input, .account .block select {
     background: #ffffff;
     border: none !important;
     padding: 10px 20px !important;

@@ -17,12 +17,6 @@ if ((isset($_POST['firstname']) && !empty($_POST['firstname'])) && (isset($_POST
     $sql = "INSERT INTO user (firstname, lastname, email, password, phone) VALUES('$firstname','$lastname','$email','$password','$phone')";
 
     $result = $db->query($sql);
-
-    if ($result == true) {
-        echo "Информация занесена в базу данных";
-    } else {
-        echo "Информация не занесена в базу данных";
-    }
 }
 
 
@@ -35,7 +29,7 @@ mysqli_close($db);
 <html>
 <head>
     <meta charset="utf-8">
-    <title>UNTITLED</title>
+    <title>Регистрация</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="css/register.css?v=1.0" rel="stylesheet" type="text/css"/>
