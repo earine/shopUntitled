@@ -34,10 +34,6 @@
     font-size: 18px;
 }
 
-.navbar-nav > li > a {
-    /*padding-top: 5px;*/
-    /*padding-bottom: 55px;*/
-}
 
 .nav > li > a {
     padding: 10px 25px;
@@ -153,11 +149,6 @@ a {
     cursor: pointer;
 }
 
-.user-login-info a, .cart-area a {
-    position: relative;
-
-}
-
 /*.col-md-6 {*/
 /*!*border-left: 1px solid #ebebeb;*!*/
 /*!*border-right: 1px solid #ebebeb;*!*/
@@ -169,15 +160,70 @@ a {
     /*width: 45px;*/
 }
 
-.user-login-info img {
-    /*padding-top: 10px;*/
-    margin-right: 200px;
-
+#user-login-inf {
+    width: 200px;
+    height: 250px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    justify-content: center;
 }
 
-.cart-area img {
-    /*margin-top: -20px;*/
-    margin-left: 350px;
-
+.form-horizontal {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
+.form-horizontal .login {
+    background: #ffffff;
+    padding: 10px 20px !important;
+    line-height: 30px !important;
+    height: 40px !important;
+    border-radius: 4px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    background-size: 50px 50px;
+    color: #000;
+    outline: none;
+    margin: 5px 1px 3px 0px;
+}
+
+#btn-login {
+    margin-top: 4%;
+    width: 100%;
+    font-size: 15px;
+    text-transform: none;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    padding: 10px 30px;
+    background: #ff6c00;
+    color: #fff;
+}
+
+.form-horizontal > a {
+    font-size: 15px;
+    line-height: 50px;
+}
+
+label {
+    display: block;
+    /*height: 500px;*/
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 200;
+    margin: 8px 0 2px;
+}
+
+#user-login-inf > input[type=email], #user-login-inf > input[type=password], #user-login-inf > input[type=text] {
+    border: 1px solid #d8d8d8;
+    background: #fff;
+    font-size: 13px;
+    border-radius: 4px;
+    height: 36px !important;
+    padding: 8px !important;
+    line-height: 15px !important;
+}
