@@ -84,13 +84,13 @@ $result = $db->query($sql);
                     <p class="price">$<?= $product['price']; ?></p>
                 <?php endif; ?>
                 <p class="product-desc"><?= $product['description']; ?></p>
-
-
                 <?php endwhile; ?>
-
-                <!--            <p class="price"><span class="discount-price text-danger" style="font-size:130%"><s>$-->
-                <? //=$product['price']; ?><!--</s></span> $-->
-                <? //=round($product['price'] - ($product['price']*$product['discount_percent'])/100, 2); ?><!--</p>-->
+                <row>
+                    <div class="add-to-cart">
+                        <!--                    <a href="#" class="btn btn-dark" role="button">Add to Cart</a>-->
+                        <a href="#" class="btn btn-warning" id="btn-add-to-cart" role="button">Добавить в корзину</a>
+                    </div>
+                </row>
             </div>
         </div>
     </div>

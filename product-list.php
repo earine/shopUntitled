@@ -31,43 +31,11 @@ $result = $db->query($sql);
 </head>
 <body>
 
-<!-- ##### Shop Grid Area Start ##### -->
-
 <div class="container">
     <div class="row">
-
-
-
         <div class="col-12 col-md-9 col-lg-10">
             <div class="shop_grid_product_area">
-                <!--                    <div class="row">-->
-                <!--                        <div class="col-12">-->
-                <!--                            <div class="product-topbar d-flex align-items-center justify-content-between">-->
-                <!--                                <!-- Total Products -->
-                <!--                                <div class="total-products">-->
-                <!--                                    <p><span>186</span> products found</p>-->
-                <!--                                </div>-->
-                <!--                                <!-- Sorting -->
-                <!--                                <div class="product-sorting d-flex">-->
-                <!--                                    <p>Sort by:</p>-->
-                <!--                                    <form action="#" method="get">-->
-                <!--                                        <select name="select" id="sortByselect">-->
-                <!--                                            <option value="value">Highest Rated</option>-->
-                <!--                                            <option value="value">Newest</option>-->
-                <!--                                            <option value="value">Price: $$ - $</option>-->
-                <!--                                            <option value="value">Price: $ - $$</option>-->
-                <!--                                        </select>-->
-                <!--                                        <input type="submit" class="d-none" value="">-->
-                <!--                                    </form>-->
-                <!--                                </div>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-
                 <div class="row">
-                    <!-- Single Product -->
-                    <!--                        <div class="col-12 col-sm-6 col-lg-4" style="background-color: aquamarine">-->
-
                     <?php mysqli_data_seek($result, 0);
                     while ($product = mysqli_fetch_assoc($result)) : ?>
                         <div class="col-md-4">
@@ -104,26 +72,13 @@ $result = $db->query($sql);
                             </div>
                         </div>
                     <?php endwhile; ?>
-                    <!--                        </div>-->
 
                 </div>
             </div>
-            <!-- Pagination -->
-            <nav aria-label="navigation">
-                <ul class="pagination mt-50 mb-70">
-                    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">...</a></li>
-                    <li class="page-item"><a class="page-link" href="#">21</a></li>
-                    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-                </ul>
-            </nav>
         </div>
     </div>
 </div>
-<!-- ##### Shop Grid Area End ##### -->
 
 
 </body>
+</html>

@@ -15,15 +15,10 @@ include('core/singup.php');
     <link href="css/navigation-bar.css?v=1.0" rel="stylesheet" type="text/css"/>
     <link href="css/register.css?v=1.0" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/dropdown-menu.js" type="text/javascript"></script>
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/inputmask.js"></script>-->
     <script src="js/jquery.mask.js"></script>
-
-    <!--    <script src="js/validation.js" type="text/javascript"></script>-->
 </head>
 
 <body>
@@ -32,14 +27,11 @@ include('core/singup.php');
 <script>
     $(document).ready(function () {
         $('input[name="telephone"]').mask('+38 (000) 000 00 00', {placeholder: "+__ (___) ___ __ __"});
-        // $('input[name="email"]').mask("{1,20}@{1,20}.*{3}");
     });
 
     function check() {
         var confirmedPassword = false;
         var notEmptyFields = false;
-        // var text_fields = form.getElementsByTagName('input');
-
 
         if (document.getElementById('password-try').value === document.getElementById('confirm-password').value) {
             confirmedPassword = true;
@@ -128,7 +120,6 @@ include('core/singup.php');
                                 соглашением и Политикой о конфиденциальности.</p>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>

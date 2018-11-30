@@ -23,7 +23,6 @@ $featured = $db->query("SELECT * FROM products WHERE featured = 1");
 
 
 <div class="container-fluid">
-    <!--    <form method="get" action="details.php">-->
     <h2 class="text-center">СПЕЦИАЛЬНЫЕ ПРЕДЛОЖЕНИЯ</h2>
     <div class="row">
         <?php while($product = mysqli_fetch_assoc($featured)) : ?>
@@ -36,13 +35,11 @@ $featured = $db->query("SELECT * FROM products WHERE featured = 1");
                 <img src="images/<?=$product['image-1']; ?>" alt="<?=$product['title']; ?>" id="images"/>
                 <div class="overlay"></div>
                 <div class="button"><a href="details.php?id=<?php echo $product['id']; ?>"> ПОДРОБНЕЕ </a></div>
-<!--                data-toggle="modal" data-target="#details-1"-->
             </div>
             <p class="price"><span class="discount-price text-danger"><s>$<?=$product['price']; ?></s></span> $<?=round($product['price'] - ($product['price']*$product['discount_percent'])/100, 2); ?></p>
         </div>
         <?php endwhile; ?>
     </div>
-    <!--    </form>-->
 </div>
 
 

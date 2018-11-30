@@ -48,7 +48,6 @@
 
             </li><!-- /.dropdown -->
 
-
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Мужчины<b class="caret"></b></a>
 
@@ -97,22 +96,11 @@
 
 
         <!-- ##### Right Side Cart Area ##### -->
-
         <div class="right-side-area">
             <!-- User Login Info -->
             <div class="col-md-6">
                 <li class="dropdown" style="margin-top: -20px;">
                     <a href="authorization.php"><img src="images/elements/account-icon.png" alt=""></a>
-                    <!--                    <div class="dropdown-menu" id="user-login-inf">-->
-                    <!--                        <form class="form-horizontal"  method="post" accept-charset="UTF-8">-->
-                    <!--                            <label>Адрес почтовой почты</label>-->
-                    <!--                            <input id="email" class="form-control login" type="text" name="email" />-->
-                    <!--                            <label>Пароль</label>-->
-                    <!--                            <input id="password" class="form-control login" type="password" name="password"/>-->
-                    <!--                            <input class="btn btn-primary" id="btn-login" type="submit" name="login" value="Войти" />-->
-                    <!--                            <a href="register.php">Создать аккаунт</a>-->
-                    <!--                        </form>-->
-                    <!--                    </div>-->
                 </li>
             </div>
             <!-- Cart Area -->

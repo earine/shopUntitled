@@ -15,6 +15,4 @@ if ((isset($_POST['firstname']) && !empty($_POST['firstname'])) && (isset($_POST
 
     $result = $db->query($sql);
 }
-
-
 ?>
