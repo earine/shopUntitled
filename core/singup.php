@@ -8,10 +8,10 @@ if ((isset($_POST['firstname']) && !empty($_POST['firstname'])) && (isset($_POST
     $email = $_POST['email'];
     $password = $_POST['password'];
     $phone = $_POST['telephone'];
-
+    $date = date('Y-m-d');
 
 //This should retrive HTML form data and insert into database
-    $sql = "INSERT INTO user (firstname, lastname, email, password, phone) VALUES('$firstname','$lastname','$email','$password','$phone')";
+    $sql = "INSERT INTO user (firstname, lastname, email, password, phone, reg_date) VALUES('$firstname','$lastname','$email','$password','$phone', '$date')";
 
     $result = $db->query($sql);
 }

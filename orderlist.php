@@ -3,8 +3,7 @@ require_once 'core/init.php';
 //include('header.php');
 include('core/addproducts.php');
 
-$sql = "SELECT p.title, u.firstname, u.lastname, o.id, o.price FROM user u, products p, orders o, products_orders po WHERE
- po.order_id = o.id AND po.product_id = p.id AND o.user_id = u.id GROUP BY o.id";
+$sql = "SELECT o.id, o.price, u.firstname, u.lastname, u.phone FROM orders o, user u WHERE o.user_id = u.id";
 
 $result = $db->query($sql);
 
@@ -46,7 +45,7 @@ $i = 0;
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index.php">
                             <span data-feather="home"></span>
                             Главная страница <span class="sr-only">(current)</span>
                         </a>
@@ -87,6 +86,7 @@ $i = 0;
                                 <th scope="col">Клиент</th>
                                 <th scope="col">Товар</th>
                                 <th scope="col">Сумма</th>
+                                <th scope="col">Телефон</th>
                             </tr>
                             </thead>
                             <?php
@@ -98,14 +98,18 @@ $i = 0;
                                     <td class="invert">
                                         <?php
                                         $id = $order['id'];
-                                        $thissql = "SELECT p.title FROM user u, products p, orders o, products_orders po WHERE
- po.order_id = '$id' AND po.product_id = p.id AND o.user_id = u.id GROUP BY p.title";
-                                        while ($product = mysqli_fetch_assoc($db->query($thissql))) : ?>
-                                            <?= $product['title']; ?>
+                                        $thissql = "SELECT p.title FROM orders o, products p, products_orders po WHERE o.id = '$id' AND
+                                                                                                       po.order_id = o.id AND
+                                                                                                       po.product_id = p.id";
+                                        $thisresult = $db->query($thissql);
+                                        while ($product = mysqli_fetch_assoc($thisresult)) : ?>
+                                            <? echo $product['title']; ?>
+                                            <br>
                                         <?php endwhile; ?>
                                     </td>
 
                                     <td class="invert"><?= $order['price']; ?></td>
+                                    <td class="invert"><?= $order['phone']; ?></td>
                                 </tr>
                             <?php endwhile; ?>
                         </table>

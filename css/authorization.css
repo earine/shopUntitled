@@ -121,3 +121,97 @@ input:focus, textarea:focus {
 #reg-link a {
     color: #616161;
 }
+
+/*PROFILE*/
+
+/*.sidebar {*/
+/*width: 1000px;*/
+/*}*/
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #383838;;
+}
+
+.col-md-4 ul {
+    width: 200px;
+    /*margin-right: 300px;*/
+}
+
+.sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #ff6c00;
+}
+
+.sidebar .nav-link.active {
+    color: #ff6c00;
+    font-size: 20px;
+}
+
+.profile {
+    font-family: futura-pt, sans-serif;
+    font-size: 20px;
+}
+
+.profile {
+    /*height: 321px;*/
+    /*width: 265px;*/
+    margin-top: 2px;
+    padding: 1px;
+    display: inline-block;
+}
+
+.divider {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.emphasis {
+    border-top: 1px solid transparent;
+}
+
+.emphasis h2 {
+    margin-bottom: 0;
+}
+
+span.tags {
+    background: #1abc9c;
+    border-radius: 2px;
+    color: #f5f5f5;
+    font-weight: bold;
+    padding: 2px 4px;
+}
+
+.profile strong, span, div {
+    text-transform: initial;
+}
+
+/*ORDERS*/
+
+.orders-blocks {
+    margin-left: -50%;
+    width: 800px;
+    float: left;
+}
+
+.order-block {
+    padding-bottom: 20px;
+}
+
+.name-prod {
+    width: 40%;
+}
+
+.count {
+    width: 5%;
+}
+
+td img {
+    width: 180px;
+    height: 180px;
+    /*display: block;*/
+    object-fit: cover;
+}
+
+.td-image {
+    width: 150px;
+}

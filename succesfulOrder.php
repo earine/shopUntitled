@@ -1,6 +1,7 @@
 <?php
 require_once 'core/init.php';
 include('header.php');
+include('core/endCartSesion.php')
 ?>
 
 <!DOCTYPE html>

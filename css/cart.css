@@ -29,12 +29,15 @@ td img {
     width: 300px;
 }
 
+.rem {
+    text-align: center;
+}
 .close1 img {
     width: 25px;
     height: 25px;
 }
 
-ul, label {
+.checkout-left-basket ul, label {
     margin: 0;
     padding: 0;
 }
@@ -71,4 +74,8 @@ ul, label {
     font-size: 17px;
     background: #212121;
     text-decoration: none;
+}
+
+.clearfix {
+    height: 100px;
 }

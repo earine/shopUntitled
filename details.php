@@ -22,7 +22,6 @@ $result = $db->query($sql);
     <link href="css/details.css?v=1.0" rel="stylesheet" type="text/css"/>
     <link href="css/navigation-bar.css?v=1.0" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/dropdown-menu.js" type="text/javascript"></script>
@@ -87,8 +86,8 @@ $result = $db->query($sql);
                 <?php endwhile; ?>
                 <row>
                     <div class="add-to-cart">
-                        <!--                    <a href="#" class="btn btn-dark" role="button">Add to Cart</a>-->
-                        <a href="#" class="btn btn-warning" id="btn-add-to-cart" role="button">Добавить в корзину</a>
+                        <a href="core/addtocart.php?id=<?php echo $id; ?>" class="btn btn-warning" id="btn-add-to-cart"
+                           role="button">Добавить в корзину</a>
                     </div>
                 </row>
             </div>

@@ -33,7 +33,7 @@ $i = 0;
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index.php">
                             <span data-feather="home"></span>
                             Главная страница <span class="sr-only">(current)</span>
                         </a>
